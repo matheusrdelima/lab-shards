@@ -7,8 +7,8 @@ spec:
   generators:
     - list:
         elements:
-          - cluster: kind-shard-a
-          - cluster: kind-shard-b
+          - cluster: shard-a
+          - cluster: shard-b
   template:
     metadata:
       name: myapp-{{cluster}}
