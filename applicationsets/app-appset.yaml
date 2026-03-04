@@ -18,9 +18,9 @@ spec:
         repoURL: https://github.com/matheusrdelima/lab-shards
         targetRevision: main
         path: apps/myapp
-      destination:
-        name: '{{cluster}}'
-        namespace: app
+        destination:
+          name: '{{cluster}}'
+          namespace: app-{{cluster}}
       syncPolicy:
         automated:
           prune: true
