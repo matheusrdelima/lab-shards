@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: istio-shards
+  name: myapp-shards
   namespace: argocd
 spec:
   generators:
@@ -11,18 +11,16 @@ spec:
           - cluster: kind-shard-b
   template:
     metadata:
-      name: istio-{{cluster}}
+      name: myapp-{{cluster}}
     spec:
       project: default
       source:
-        repoURL: https://github.com/istio/istio
-        targetRevision: 1.20.0
-        path: manifests/charts/istio-control/istio-discovery
-        helm:
-          releaseName: istiod
+        repoURL: https://github.com/matheusrdelima/lab-shards
+        targetRevision: main
+        path: apps/myapp
       destination:
         name: '{{cluster}}'
-        namespace: istio-system
+        namespace: app
       syncPolicy:
         automated:
           prune: true
